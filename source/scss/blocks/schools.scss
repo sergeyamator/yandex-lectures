@@ -1,0 +1,13 @@
+.schools {
+  &__link {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #666;
+
+    &--active {
+      color: white;
+      background-color: #008CBA;
+    }
+  }
+}

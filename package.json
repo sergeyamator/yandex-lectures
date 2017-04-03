@@ -20,6 +20,6 @@
     "run-sequence": "^1.1.5"
   },
   "dependencies": {
-    "normalize-scss": "^4.0.3"
+    "normalize.scss": "^0.1.0"
   }
 }

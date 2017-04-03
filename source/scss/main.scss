@@ -1,8 +1,13 @@
-body {
-  background: yellow;
-
-}
-@import "utils/_mixin";
+/* ---------- Common -----------*/
+@import "../../node_modules/normalize.scss/normalize";
+@import "utils/mixin";
 @import "utils/variables";
 @import "base/base";
-@import "base/_common";
+@import "base/common";
+
+/* ---------- Blocks -----------*/
+@import "blocks/header";
+@import "blocks/logo";
+@import "blocks/title";
+@import "blocks/aside";
+@import "blocks/schools";

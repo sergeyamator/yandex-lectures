@@ -1,4 +1,3 @@
-
 mixin list(items, className, active)
     div(class="#{className}")
         ul(class="#{className}__list")
@@ -10,14 +9,32 @@ mixin list(items, className, active)
                     li(class="#{className}__item")
                         a(href="#" class="#{className}__link")= item
 
-
-
-
-
-
 mixin list-mod(items, className, id, mod)
     div(class="#{className}")
         ul(class="#{className}__list")
             each item in items
                 li(class="#{className}__item")
                     a(href="#" class="#{className}__link")= item
+
+mixin title(tagName, className, text)
+    #{tagName}(class=className) #{text}
+
+mixin lecture(school)
+    .lectures
+        - var year = 2017
+        - var index = 1
+
+        for item in school
+            for key, name in item
+                .lecture
+                    if name === 'month'
+                        .lectures__month #{key} #{year}
+                    if name === 'data'
+                        table.lacture__table
+                            for lecture, data in key
+                                tr.lecture__row
+                                    td.lectures__data #{data}
+                                    td Лекция #{index++}
+                                    td #{lecture.lectureName}
+                                    td #{lecture.lectureAuthor}
+                                    td #{lecture.downloadUrl}
