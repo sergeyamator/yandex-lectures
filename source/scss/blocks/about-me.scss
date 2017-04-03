@@ -1,0 +1,10 @@
+.about-me {
+  float: left;
+  text-decoration: none;
+  color: #4b4b4b;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+

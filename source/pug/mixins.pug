@@ -19,22 +19,30 @@ mixin list-mod(items, className, id, mod)
 mixin title(tagName, className, text)
     #{tagName}(class=className) #{text}
 
+mixin button(className, text, href)
+    if href
+        a(class=className href=href target="_blank") #{text}
+    else
+        button(class=className) #{text}
+
 mixin lecture(school)
     .lectures
         - var year = 2017
         - var index = 1
 
         for item in school
+          .lecture
             for key, name in item
-                .lecture
                     if name === 'month'
-                        .lectures__month #{key} #{year}
+                        .lecture__month #{key} #{year}
                     if name === 'data'
-                        table.lacture__table
+                        table.lecture__table
                             for lecture, data in key
                                 tr.lecture__row
-                                    td.lectures__data #{data}
-                                    td Лекция #{index++}
-                                    td #{lecture.lectureName}
-                                    td #{lecture.lectureAuthor}
-                                    td #{lecture.downloadUrl}
+                                    td.lecture__column #{data}
+                                    td.lecture__column Лекция #{index++}
+                                    td.lecture__column #{lecture.lectureName}
+                                    td.lecture__column #{lecture.lectureAuthor}
+                                    td.lecture__column: +button('button', 'Скачать', lecture.downloadUrl)
+
+
