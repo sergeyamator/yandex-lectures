@@ -25,10 +25,11 @@ mixin button(className, text, href)
     else
         button(class=className) #{text}
 
-mixin lecture(school)
-    .lectures
+mixin lecture(school, title)
+  .school.is-hidden
         - var year = 2017
         - var index = 1
+        +title('h1', 'main-title', title)
 
         for item in school
           .lecture
@@ -41,7 +42,7 @@ mixin lecture(school)
                                 tr.lecture__row
                                     td.lecture__column #{data}
                                     td.lecture__column Лекция #{index++}
-                                    td.lecture__column #{lecture.lectureName}
+                                    td.lecture__column.lecture__column--name #{lecture.lectureName}
                                     td.lecture__column #{lecture.lectureAuthor}
                                     td.lecture__column: +button('button', 'Скачать', lecture.downloadUrl)
 

@@ -1,13 +1,22 @@
 .lectures {
   float: left;
-  width: 70%;
+  width: 75%;
   padding: 15px;
   box-sizing: border-box;
   background: #fff;
+
+  @media (max-width: 1000px) {
+    float: none;
+    width: 100%;
+  }
 }
 
 .lecture {
   margin-bottom: 25px;
+
+  @media (max-width: 600px) {
+    overflow-x: auto;
+  }
 
   &__month {
     margin-bottom: 25px;
@@ -29,7 +38,12 @@
   }
 
   &__column {
+    width: 15%;
     box-sizing: border-box;
     padding: 10px;
+
+    &--name {
+      width: 40%;
+    }
   }
 }

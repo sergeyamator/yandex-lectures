@@ -1,0 +1,6 @@
+aside.aside
+  +title('h2', 'title', 'Choose your school')
+  .schools
+    -var schools = ['Школа разработки интерфейсов', 'Школа мобильной разработки', 'Школа мобильного дизайна']
+    each school, key in schools
+      a.schools__link(href="#")=school

@@ -2,6 +2,8 @@
 
 const gulp = require('gulp');
 const concat = require('gulp-concat');
+const webpack = require('gulp-webpack');
+const babel = require('gulp-babel');
 const browserSync = require('browser-sync');
 const uglify = require('gulp-uglify');
 const sass = require('gulp-sass');
@@ -23,9 +25,7 @@ var paths = {
   },
 
   js: {
-    location: [
-      'source/js/modules/init.js'
-    ],
+    location: './source/js/app.js',
     destination: 'prod/js'
   }
 };
@@ -53,12 +53,9 @@ gulp.task('sass-compile', function() {
 });
 
 /* -------- concat js -------- */
-gulp.task('concat-js', function() {
+gulp.task('js', function() {
   return gulp.src(paths.js.location)
-    .pipe(sourcemaps.init())
-    .pipe(concat('main.min.js'))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
+    .pipe(webpack(require('./webpack.config')))
     .pipe(gulp.dest(paths.js.destination));
 });
 
@@ -93,7 +90,7 @@ gulp.task('server', function() {
 gulp.task('watch', function() {
   gulp.watch('source/pug/**/*.pug', ['pug-compile']);
   gulp.watch('source/scss/**/*.scss', ['sass-compile']);
-  gulp.watch('source/js/modules/*.js', ['concat-js']);
+  gulp.watch('source/js/modules/*.js', ['js']);
   gulp.watch('source/assets/**/*', ['assets']);
   gulp.watch([
     'prod/**/*.html',
@@ -106,7 +103,7 @@ gulp.task('default', function() {
   runSequence(
     'pug-compile',
     'sass-compile',
-    'concat-js',
+    'js',
     'assets',
     'server',
     'watch')

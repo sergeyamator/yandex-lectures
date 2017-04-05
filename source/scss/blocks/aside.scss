@@ -1,0 +1,12 @@
+.aside {
+  float: left;
+  width: 25%;
+  background: #f3f3f3;
+
+  @media (max-width: 1000px) {
+    float: none;
+    width: 100%;
+    margin-bottom: 50pxß;
+    text-align: center;
+  }
+}

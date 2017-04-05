@@ -4,17 +4,15 @@ doctype html
 html(lang='ru')
     head
         meta(charset='UTF-8')
-        meta(http-equiv='X-UA-Compatible', content="IE=edge,chrome=1")
+        meta(http-equiv='X-UA-Compatible', content="IE=edge")
         meta(name='viewport' content='width=device-width')
         link(href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet")
         link(rel="stylesheet" href="css/main.min.css")
+        title Yandex lectures
         block title
     body
         include blocks/header
         main
-            .container
-                +title('h1', 'main-title', 'Школа разработки интерфейсов')
-
             .tabs.clearfix
                 include blocks/aside
                 include blocks/lectures
